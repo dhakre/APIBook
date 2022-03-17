@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  book-api:
+    image: openjdk:11
+    container_name: book-api
+    volumes:
+      - ./target/bookAPI-1.0-SNAPSHOT.jar:/bookapi.jar
+    command: ["java","-jar","bookapi.jar"]
+    ports:
+      - 8080:8080
+    depends_on:
+      - book-mysql
+
+  book-mysql:
+    image: mysql:5.6
+    container_name: book-mysql
+    volumes:
+      - ./docker/DEV:/docker-entrypoint-initdb.d
+    ports:
+      - 3316:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - LANG=C.UTF-8
+    healthcheck:
+      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-proot", "information_schema", "-e", "SELECT 1"]
+      timeout: 3s
+      retries: 10
