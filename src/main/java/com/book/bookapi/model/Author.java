@@ -1,10 +1,19 @@
 package com.book.bookapi.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Author", schema = "BOOK_API_DATA")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,49 +22,9 @@ public class Author {
     String firstName;
     @Column(name = "lastname")
     String lastName;
+    @Column(name = "starRating")
+    Integer starRating;
     @Column(name = "bookid")
     Integer bookId;
 
-    public Author(Integer id, String firstName, String lastName, Integer bookId) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.bookId = bookId;
-    }
-
-    public Author() {
-
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Integer getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
 }

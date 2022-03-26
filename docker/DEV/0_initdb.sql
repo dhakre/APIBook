@@ -13,6 +13,7 @@ CREATE TABLE `Author` (
      `id` INT(20) NOT NULL AUTO_INCREMENT,
      `firstName` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
      `lastName` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+     `starRating` INT(20) NULL DEFAULT NULL,
      `bookId` INT(20) NULL DEFAULT NULL,
      PRIMARY KEY (`id`) USING BTREE,
      UNIQUE INDEX `Index_name` (`firstName`) USING BTREE,
@@ -21,13 +22,18 @@ CREATE TABLE `Author` (
 )
     COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=6
+AUTO_INCREMENT=235
 ;
 
 
 
 INSERT INTO `Book` (`id`, `name`, `pageCount`) VALUES (1, 'the golden ticket', '255');
 INSERT INTO `Book` (`id`, `name`, `pageCount`) VALUES (2, 'coding game', '300');
+INSERT INTO `Book` (`id`, `name`, `pageCount`) VALUES (3, 'Java world', '200');
+INSERT INTO `Book` (`id`, `name`, `pageCount`) VALUES (4, 'Intro to GraphQl', '150');
 
-INSERT INTO `Author` (`id`, `firstName`, `LastName`, `bookId`) VALUES (4, 'Brendon', 'Bouchard', 1);
-INSERT INTO `Author` (`id`, `firstName`, `LastName`, `bookId`) VALUES (5, 'John', 'Doe', 2);
+INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (4, 'Brendon', 'Bouchard',4, 1);
+INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (5, 'John', 'Doe',3, 2);
+INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (6, 'Johnny', 'Doe',2, 4);
+INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (7, 'Brian', 'Williams',4, 3);
+INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (8, 'Brandy', 'Smith',5, 2);

@@ -1,0 +1,18 @@
+
+type Author {
+    id: Int
+    firstName: String
+    lastName: String
+    starRating: Int
+    bookId: Int
+}
+
+
+enum StarRating{
+    _1,
+    _2,
+    _3,
+    _4,
+    _5
+}
+

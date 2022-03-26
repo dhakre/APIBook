@@ -2,25 +2,36 @@ type Book {
     id: Int
     name: String
     pageCount: String
-    author: Author
+    author(order:ListOrder): [Author]
 }
 
-type Query {
-    allBook: [Book]
-    allAuthor:[Author]
-    getBookByName(name: String): Book
+enum ListOrder{
+    ASC,
+    DESC
 }
 
-type Mutation {
-    newBook(name: String!, pageCount: String): Book
-    deleteBook(id:Int!):Book
-}
-
-
-
-type Author {
+type NewBook {
     id: Int
-    firstName: String
-    lastName: String
-    bookId: Int
+    name: String
+    pageCount: String
+}
+
+input BookFilter{
+    name: String
+}
+
+input BookInput {
+    name: String!
+    pageCount: String
+}
+
+
+input DeleteBookInput{
+    id:Int!
+}
+
+type DeletedBook{
+    id: Int
+    name: String
+    pageCount: String
 }

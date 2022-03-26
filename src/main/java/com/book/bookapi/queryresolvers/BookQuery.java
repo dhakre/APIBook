@@ -2,27 +2,27 @@ package com.book.bookapi.queryresolvers;
 
 import com.book.bookapi.model.Author;
 import com.book.bookapi.model.Book;
+import com.book.bookapi.types.BookFilter;
 import com.book.bookapi.repository.AuthorRepository;
 import com.book.bookapi.repository.BookRepository;
 import graphql.kickstart.tools.GraphQLQueryResolver;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 
 @Component
+@AllArgsConstructor
 public class BookQuery implements GraphQLQueryResolver{
 
-    @Autowired
     BookRepository bookRepository;
-    @Autowired
     AuthorRepository authorRepository;
 
     public Iterable<Book> allBook(){
         return bookRepository.findAll();
     }
 
-    public Book getBookByName(String name){
-        return bookRepository.findBookByName(name);
+    public Book getBookByName(BookFilter bookFilter){
+        return bookRepository.findBookByName(bookFilter.getName());
     }
 
     public Iterable<Author> allAuthor(){

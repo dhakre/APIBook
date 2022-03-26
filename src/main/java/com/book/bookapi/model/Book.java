@@ -1,9 +1,18 @@
 package com.book.bookapi.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Book", schema = "BOOK_API_DATA")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,38 +20,4 @@ public class Book {
     private String name;
     @Column(name = "pagecount")
     private String pageCount;
-
-    public Book(Integer id, String name, String pageCount) {
-        this.id = id;
-        this.name = name;
-        this.pageCount = pageCount;
-    }
-
-    public Book() {
-
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPageCount() {
-        return pageCount;
-    }
-
-    public void setPageCount(String pageCount) {
-        this.pageCount = pageCount;
-    }
 }

@@ -65,45 +65,43 @@ Well, there are few reasons:
 
 get book with author
 ``` 
-   query {
-   allBook{
-        id
-       name
-       pageCount
-       author{
-         id
-         firstName
-         lastName
-  
-       }
-   }
-   }
+{
+  allBook{
+    id
+    name
+    pageCount
+    author(order:DESC) {
+        firstName
+        starRating
+    }
+
+  }
+  }
 ```
-The output of this request is as follows:
-![allBook](/img/allBook.png)
 
 * Mutation example
 
 create new book
 ```
-  mutation {
-  newBook(name:"Scrum Master", pageCount:"250"){
-    id
-    name
-    pageCount
-  }
-  }
+mutation{
+    newBook(input: {
+        name: "Java World v3",
+        pageCount: "200"
+    }){
+        name
+        pageCount
+    }
+}
 ``` 
 
 delete book
 ```
-  mutation {
-  deleteBook(id:3){
-    id
-    name
-    pageCount
-  }
-  }
+mutation{
+    deleteBook(input: {
+        id: 3
+    }){
+        name
+        pageCount
+    }
+}
 ```
-Response:
-![deleteBook](/img/deleteBook.png)

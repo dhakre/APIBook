@@ -1,0 +1,13 @@
+
+type Query {
+    allBook: [Book]
+    allAuthor:[Author]
+    getBookByName(filter: BookFilter): Book
+}
+
+type Mutation {
+    newBook(input: BookInput): NewBook
+    deleteBook(input:DeleteBookInput): DeletedBook
+}
+
+
