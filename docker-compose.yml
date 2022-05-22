@@ -6,9 +6,10 @@ services:
     container_name: book-api
     volumes:
       - ./target/bookAPI-1.0-SNAPSHOT.jar:/bookapi.jar
-    command: ["java","-jar","bookapi.jar"]
+    command: ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5252","-Dspring.profiles.active=local","-jar","bookapi.jar"]
     ports:
-      - 8080:8080
+      - "8080:8080"
+      - "5252:5252"
     depends_on:
       - book-mysql
 
@@ -18,7 +19,7 @@ services:
     volumes:
       - ./docker/DEV:/docker-entrypoint-initdb.d
     ports:
-      - 3316:3306
+      - "3316:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - LANG=C.UTF-8
