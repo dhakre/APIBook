@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   book-api:
-    image: openjdk:11
+    image: openjdk:18
     container_name: book-api
     volumes:
       - ./target/bookAPI-1.0-SNAPSHOT.jar:/bookapi.jar
