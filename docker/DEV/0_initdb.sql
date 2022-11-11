@@ -25,6 +25,20 @@ ENGINE=InnoDB
 AUTO_INCREMENT=235
 ;
 
+CREATE TABLE `Design` (
+	`id` INT(11) NOT NULL,
+	`category` VARCHAR(255) NULL DEFAULT '' COLLATE 'latin1_swedish_ci',
+	`colour` VARCHAR(255) NULL DEFAULT '0' COLLATE 'latin1_swedish_ci',
+	`basedMovie` VARCHAR(255) NULL DEFAULT '0' COLLATE 'latin1_swedish_ci',
+	`audioBook` VARCHAR(255) NULL DEFAULT '0' COLLATE 'latin1_swedish_ci',
+	INDEX `FK1_book_design` (`id`) USING BTREE,
+	CONSTRAINT `FK1_book_design` FOREIGN KEY (`id`) REFERENCES `BOOK_API_DATA`.`Book` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+
 
 
 INSERT INTO `Book` (`id`, `name`, `pageCount`) VALUES (1, 'the golden ticket', '255');
@@ -37,3 +51,9 @@ INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALU
 INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (6, 'Johnny', 'Doe',2, 4);
 INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (7, 'Brian', 'Williams',4, 3);
 INSERT INTO `Author` (`id`, `firstName`, `LastName`,`starRating`, `bookId`) VALUES (8, 'Brandy', 'Smith',5, 2);
+
+
+INSERT INTO `BOOK_API_DATA`.`Design` (`id`, `category`, `colour`, `basedMovie`, `audioBook`) VALUES (1, 'fiction', 'yes', 'no', 'in planning'),
+(2, 'educational', 'few pages', 'no', 'no'),
+(3, 'educational', 'no', 'no', 'few chapters'),
+(4, 'educational', 'no', 'no', 'no');

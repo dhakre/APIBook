@@ -1,8 +1,25 @@
-type Book {
+
+interface BookParent{
+    id: Int
+    name: String
+    pageCount: String
+}
+
+type Book implements BookParent{
     id: Int
     name: String
     pageCount: String
     author(order:ListOrder): [Author]
+}
+
+type BookDesign implements BookParent{
+    id: Int
+    name: String
+    pageCount: String
+    category: String
+    colour: String
+    basedMovie: String
+    audioBook: String
 }
 
 enum ListOrder{
